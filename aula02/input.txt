@@ -1,0 +1,4 @@
+if ifz a = 15 ; 
+]a-v = 13;
+// cometario
+%$#@!

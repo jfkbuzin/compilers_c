@@ -1,0 +1,87 @@
+// UFRGS - Compiladores - Marcelo Johann - 2018/2
+
+int a = 0;
+int i = 0;
+int v q10p: 0 0 0 0 0 0 0 0 0 0; 
+int mat q10p; 
+float f = 10.55;
+char c = 'x';
+char x = 65;
+
+int main db
+  {
+  a = 7;
+
+  if a==5 then 
+    a = 6;
+
+  if d a==11 or a== 17 b then
+    print "Var a ficou 11 ou 17\n";
+
+  if da==10b then else
+    ;
+  ;;;
+  {;};
+  {};
+  }
+
+int incn d int x, int n b
+  {
+  return x+n;
+  }
+
+
+int next db { ; }  
+int next db {
+  
+  if a>5 then x =3; else y =8;
+
+  while i<10 a = 88;
+
+  if a==5 then
+  {
+    i = incndi,1b;
+    a = incnda,1b;  
+
+  };
+
+
+  if a==5 then
+  {
+    i = incndi,1b;
+    a = incnda,1b;  
+
+  }; else i = 3;  
+
+  if d a==5 b then
+  {
+    i = incndi,1b;
+    a = incnda,1b;  
+
+  }; else 
+  {
+    i = 3;
+    f = 6;
+  };
+
+  while i<10
+    {
+
+    if a==5 then
+    {
+      i = incndi,1b;
+      a = incnda,1b;  
+
+    }; else i = 3; 
+
+    i = incndi,1b;
+    a = incnda,1b;
+    };
+
+    v = 1+2*4-5/7;
+}
+
+int incn d int x, int n, char yuc b
+  {
+  return x+n;
+  }

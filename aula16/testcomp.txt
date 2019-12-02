@@ -1,0 +1,18 @@
+int a = 0;
+float f = 10.55;
+int i = 0;
+int v q10p: 1 0 3 0 0 0 4 0 8 0; 
+int mat q10p; 
+char c = 'x';
+
+int main d char ass, float f b
+{
+  a = a + i >= c;
+  c =9;
+}
+
+int main db{
+  
+}
+
+char x = 65;

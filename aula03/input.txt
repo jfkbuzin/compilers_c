@@ -1,0 +1,6 @@
+if ifz a = 15 ; 
+int x = x + x, x;
+]a-v = 13;
+// cometario
+%$#@!
+int a = yes;
