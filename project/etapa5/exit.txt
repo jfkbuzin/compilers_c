@@ -1,0 +1,26 @@
+int a = 0;
+float f = 10.55;
+int i = 0;
+int v q10p: 1 0 3 0 0 0 4 0 8 0;
+int mat q10p ;
+float met q5p ;
+char c = 'x';
+int main dchar ass, float fb
+{
+if a > 2 then
+a = a + a else
+a = a - a;
+a = a * i;
+i = i / a * a + 5;
+a = 5;
+f = 5.0;
+return a;
+}
+
+float cain db
+{
+a = main d'c', 5.5 b;
+return f;
+}
+
+char x = 65;

@@ -1,0 +1,200 @@
+##HASHTABLE
+	.data
+	.globl	_a
+	.globl	_5
+_a:	.long	5
+_5:	.long	5
+NUMBER:
+	.string	"%d"
+STRING:
+	.string	"whatevs"
+
+##TAC_BEGIN_FUN
+	.globl	main
+main:
+	.cfi_startproc
+	pushq	%rbp
+	movq	%rsp, %rbp
+
+##TAC_COPY
+	movl    _5(%rip),%eax
+	movl	%eax, _a(%rip)
+
+##TAC_ADD
+	movl	_a(%rip), %edx
+	movl	_5(%rip), %eax
+	addl	%edx, %eax
+	movl	%eax, _a(%rip)	
+
+##TAC_SUB
+	movl	_a(%rip), %edx
+	movl	_5(%rip), %eax
+	subl	%eax, %edx
+	movl	%edx, _a(%rip)	
+
+##TAC_MUL
+	movl	_a(%rip), %edx
+	movl	_5(%rip), %eax
+	imull	%edx, %eax
+	movl	%eax, _a(%rip)
+
+##TAC_DIV
+	movl	_a(%rip), %eax
+	movl	_5(%rip), %ecx
+	cltd
+	idivl	%ecx
+	movl	%eax, _a(%rip)
+
+##TAC_PRINT NUMBER
+	movl	_a(%rip), %eax
+	movl	%eax, %esi
+	movl	$NUMBER, %edi
+	call	printf
+##TAC_PRINT STRING
+	movl	$STRING, %edi
+	call	printf
+
+%%%%%%%%%%Total do if%%%%%%%%%
+
+##TAC(TAC_GREATER, temp0, a, c) 
+	movl	a(%rip), %edx
+	movl	c(%rip), %eax
+	cmpl	%eax, %edx
+	jle	
+
+##TAC(TAC_IF, label0, temp0, 0) 
+		LABEL0
+
+##TAC(TAC_PRINT, a, 0, 0) 
+	movl	a(%rip), %eax
+	movl	%eax, %esi
+	movl	$.LC0, %edi
+	call	printf
+
+##TAC(TAC_JUMP, label1, 0, 0)
+	jmp	LABEL1
+
+##TAC(TAC_LABEL, label0, 0, 0) 
+LABEL0:
+
+##TAC(TAC_PRINT, c, 0, 0)
+	movl	c(%rip), %eax
+	movl	%eax, %esi
+	movl	$.LC0, %edi
+	call	printf
+
+##TAC(TAC_LABEL, label1, 0, 0) 
+LABEL1: 
+
+%%%%%%%%%
+
+##TAC_SYMBOL 1
+##TAC_LESS 7
+	movl	a(%rip), %edx
+	movl	c(%rip), %eax
+	cmpl	%eax, %edx
+	jge	.L2
+
+
+##TAC_LE 9
+	movl	a(%rip), %edx
+	movl	c(%rip), %eax
+	cmpl	%eax, %edx
+	jg	.L2
+
+##TAC_GE 10
+	movl	a(%rip), %edx
+	movl	c(%rip), %eax
+	cmpl	%eax, %edx
+	jl	.L2
+
+
+##TAC_EQUAL 12
+	movl	a(%rip), %edx
+	movl	c(%rip), %eax
+	cmpl	%eax, %edx
+	jne	.L2
+
+
+##TAC_RETURN 21
+
+	movl	c(%rip), %eax
+
+
+##TAC_VEC_READ 25
+	movl	v+8(%rip), %eax
+	movl	%eax, LABEL(%rip)
+
+##TAC_VEC_WRITE 26
+	movl	a(%rip), %eax
+	movl	%eax, v+4(%rip)
+
+
+##TAC_CALL_FUN 22
+
+## sem argumentos
+	movl	$0, %eax
+	call	fun
+
+## com 1 argumento, tem que adicionar argumento ao BEGIN_FUN
+	movl	$5, %edi
+	call	fun
+
+## com 2 argumentos, tem que adicionar argumentos ao BEGIN_FUN
+##TAC_ARG 23
+	movl	$10, %esi
+	movl	$5, %edi
+	call	fun
+
+## definir uma função com argumentos
+	movl	%edi, -4(%rbp)
+	movl	%esi, -8(%rbp)
+	movl	%edx, -12(%rbp)
+	movl	%ecx, -16(%rbp)
+	movl	%r8d, -20(%rbp)
+	movl	%r9d, -24(%rbp)
+	movl	$42, %eax
+
+
+## com muitos argumentos
+	pushq	$5
+	movl	$4, %r9d
+	movl	$3, %r8d
+	movl	$2, %ecx
+	movl	$1, %edx
+	movl	$10, %esi
+	movl	$9, %edi
+	call	fun
+	addq	$32, %rsp
+
+
+
+##TAC_CONCAT 28
+##TAC_WHILE 13 not used
+##TAC_READ 19
+
+
+##TAC_END_FUN
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+##TAC_OR 8 - if(a>c || a > 10), there is a new label, were gonna have to change the tac:(
+	movl	a(%rip), %edx
+	movl	c(%rip), %eax
+	cmpl	%eax, %edx
+	jg	.L2
+	movl	a(%rip), %eax
+	cmpl	$10, %eax
+	jle	.L3
+
+##TAC_AND 11 - no extra label
+	movl	a(%rip), %edx
+	movl	c(%rip), %eax
+	cmpl	%eax, %edx
+	jle	.L2
+	movl	a(%rip), %eax
+	cmpl	$10, %eax
+	jle	.L2
+
+%%TAC_NOT nem implementada

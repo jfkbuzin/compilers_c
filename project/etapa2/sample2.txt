@@ -1,0 +1,12 @@
+int function  d int x, int y, int z b
+   {
+   a=5;
+   w=a;
+   if  d a==0 b  then
+        print  d a b 
+   else
+        print  d w b ;
+   }
+int a =0 ;
+int w =0 ;
+int c =0;
